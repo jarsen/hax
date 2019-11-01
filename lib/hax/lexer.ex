@@ -5,19 +5,20 @@ defmodule Hax.Lexer do
   end
 
   defp token_for_char(char) do
-    token_type =
-      %{
-        "=" => :assign,
-        "+" => :plus,
-        "(" => :lparen,
-        ")" => :rparen,
-        "{" => :lbrace,
-        "}" => :rbrace,
-        "," => :comma,
-        ";" => :semicolon
-      }
-      |> Map.get(char, :unknown)
+    {token_type_for_char(char), char}
+  end
 
-    {token_type, char}
+  defp token_type_for_char(char) do
+    %{
+      "=" => :assign,
+      "+" => :plus,
+      "(" => :lparen,
+      ")" => :rparen,
+      "{" => :lbrace,
+      "}" => :rbrace,
+      "," => :comma,
+      ";" => :semicolon
+    }
+    |> Map.get(char, :unknown)
   end
 end
