@@ -1,6 +1,7 @@
 defmodule Hax.Lexer do
-  def token_stream(input) do
+  def token_stream(input) when is_binary(input) do
     input
+    |> String.graphemes()
     |> Stream.map(&token_for_char/1)
   end
 

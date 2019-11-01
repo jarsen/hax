@@ -3,10 +3,9 @@ defmodule LexerTest do
 
   alias Hax.Lexer
 
-  test "handles all basic tokens" do
+  test "lexes tokens from a string" do
     tokens =
       "=+(){},;"
-      |> String.graphemes()
       |> Lexer.token_stream()
       |> Enum.to_list()
 
